@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latihan JavaScript</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #111111;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff1a1a;
+            font-size: 40px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px red;
+        }
+
+        body > p {
+            text-align: center;
+            color: #cccccc;
+        }
+
+        .latihan {
+            background: #1c1c1c;
+            color: white;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 500px;
+            border-radius: 10px;
+            border: 1px solid #b30000;
+            box-shadow: 0 0 8px rgba(255, 0, 0, 0.2);
+        }
+
+        .latihan h3 {
+            color: #ff3333;
+        }
+
+        button {
+            background: #cc0000;
+            color: white;
+            padding: 10px 15px;
+            border: 1px solid #ff3333;
+            border-radius: 5px;
+            margin-top: 8px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: #ff1a1a;
+            box-shadow: 0 0 10px red;
+        }
+
+        input {
+            background: #292929;
+            color: white;
+            padding: 10px;
+            max-width: 90%;
+            border: 1px solid #990000;
+            border-radius: 5px;
+            margin: 3px;
+        }
+
+        input::placeholder {
+            color: #aaaaaa;
+        }
+
+        input:focus {
+            outline: 1px solid red;
+        }
+
+        .latihan p {
+            color: #eeeeee;
+            overflow-wrap: anywhere;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript</h1>
+    <p>Pemrograman Web Dasar</p>
+
+    <div class="latihan">
+        <h3>1. Variabel</h3>
+        <button onclick="variabel()">Coba</button>
+        <p id="hasil1"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>2. Operator Matematika</h3>
+        <button onclick="operator()">Hitung</button>
+        <p id="hasil2"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>3. Percabangan IF ELSE</h3>
+        <input type="number" id="nilai" placeholder="Masukkan nilai 0-100">
+        <button onclick="cekNilai()">Cek Nilai</button>
+        <p id="hasil3"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>4. Bilangan Ganjil atau Genap</h3>
+        <input type="number" id="angka" placeholder="Masukkan angka">
+        <button onclick="cekAngka()">Periksa</button>
+        <p id="hasil4"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>5. Perulangan FOR</h3>
+        <button onclick="perulangan()">Tampilkan Angka</button>
+        <p id="hasil5"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>6. Function</h3>
+        <input type="number" id="panjang" placeholder="Panjang">
+        <input type="number" id="lebar" placeholder="Lebar">
+        <button onclick="hitungLuas()">Hitung Luas</button>
+        <p id="hasil6"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>7. Array</h3>
+        <button onclick="tampilArray()">Tampilkan Buah</button>
+        <p id="hasil7"></p>
+    </div>
+
+    <div class="latihan">
+        <h3>8. Event dan DOM</h3>
+        <button onclick="ubahWarna()">Ubah Warna Teks</button>
+        <p id="hasil8">Saya sedang belajar JavaScript!</p>
+    </div>
+    <script>
+        // 1. Variabel
+        function variabel() {
+            let nama = "Billy Maulana Wibowo";
+            let umur = 19;
+
+            document.getElementById("hasil1").innerHTML =
+                "Nama: " + nama + "<br>Umur: " + umur;
+        }
+
+        // 2. Operator Matematika
+        function operator() {
+            let a = 10;
+            let b = 5;
+
+            document.getElementById("hasil2").innerHTML =
+                "Penjumlahan: " + (a + b) +
+                "<br>Pengurangan: " + (a - b) +
+                "<br>Perkalian: " + (a * b) +
+                "<br>Pembagian: " + (a / b);
+        }
+
+        // 3. Percabangan IF ELSE
+        function cekNilai() {
+            let input = document.getElementById("nilai").value;
+            let nilai = Number(input);
+
+            if (input === "" || nilai < 0 || nilai > 100) {
+                document.getElementById("hasil3").innerHTML =
+                    "Masukkan nilai antara 0 sampai 100.";
+            } else if (nilai >= 80) {
+                document.getElementById("hasil3").innerHTML = "Nilai A";
+            } else if (nilai >= 70) {
+                document.getElementById("hasil3").innerHTML = "Nilai B";
+            } else if (nilai >= 60) {
+                document.getElementById("hasil3").innerHTML = "Nilai C";
+            } else {
+                document.getElementById("hasil3").innerHTML = "Nilai D";
+            }
+        }
+
+        // 4. Bilangan Ganjil atau Genap
+        function cekAngka() {
+            let input = document.getElementById("angka").value;
+            let angka = Number(input);
+
+            if (input === "") {
+                document.getElementById("hasil4").innerHTML =
+                    "Masukkan angka terlebih dahulu.";
+            } else if (angka % 2 === 0) {
+                document.getElementById("hasil4").innerHTML =
+                    "Bilangan Genap";
+            } else {
+                document.getElementById("hasil4").innerHTML =
+                    "Bilangan Ganjil";
+            }
+        }
+
+        // 5. Perulangan FOR
+        function perulangan() {
+            let teks = "";
+
+            for (let i = 1; i <= 10; i++) {
+                teks += i + " ";
+            }
+
+            document.getElementById("hasil5").innerHTML = teks;
+        }
+
+        // 6. Function Menghitung Luas
+        function hitungLuas() {
+            let inputPanjang = document.getElementById("panjang").value;
+            let inputLebar = document.getElementById("lebar").value;
+
+            if (inputPanjang === "" || inputLebar === "") {
+                document.getElementById("hasil6").innerHTML =
+                    "Isi panjang dan lebar terlebih dahulu.";
+                return;
+            }
+
+            let p = Number(inputPanjang);
+            let l = Number(inputLebar);
+            let luas = p * l;
+
+            document.getElementById("hasil6").innerHTML =
+                "Luas persegi panjang: " + luas;
+        }
+
+        // 7. Array
+        function tampilArray() {
+            let buah = ["Anggur","Strawberry"];
+
+            document.getElementById("hasil7").innerHTML =
+                buah.join(", ");
+        }
+
+        // 8. Event dan DOM
+        function ubahWarna() {
+            document.getElementById("hasil8").style.color = "red";
+            document.getElementById("hasil8").innerHTML =
+                "JavaScript berhasil mengubah halaman!";
+        }
+    </script>
+
+</body>
+</html>
